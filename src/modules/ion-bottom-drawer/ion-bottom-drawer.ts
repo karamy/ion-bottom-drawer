@@ -43,7 +43,8 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
     this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"background-image","url('https://static.vecteezy.com/system/resources/previews/000/153/301/non_2x/vector-old-dirty-grunge-note-paper-background.jpg')");
     this._setDrawerState(this.state);
 
-    const hammer = new Hammer(this._element.nativeElement);
+    //Registro un listener su un elemento html
+    const hammer = new Hammer(this._element.nativeElement.querySelector('.div-draggable'));
     hammer.get('pan').set({ enable: true, direction: Hammer.DIRECTION_VERTICAL });
     hammer.on('pan panstart panend', (ev: any) => {
       if (this.disableDrag) return;
