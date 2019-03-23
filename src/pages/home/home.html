@@ -6,8 +6,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding no-bounce>
-  <ion-list radio-group [(ngModel)]="drawerState">
+ <ion-content padding no-bounce>
+ <!-- <ion-list radio-group [(ngModel)]="drawerState">
     <ion-item>
       <ion-label>Top</ion-label>
       <ion-radio [checked]="drawerState===states.Top" [value]="states.Top"></ion-radio>
@@ -43,12 +43,11 @@
       <ion-input type="number" [(ngModel)]="minimumHeight" value="0"></ion-input>
     </ion-item>
     <h1>NOW IT BEGINS 23/03/19</h1>
-  </ion-list>
-</ion-content>
+  </ion-list>-->
+</ion-content> 
 
-<ion-bottom-drawer [disableDrag]="disableDrag" [(state)]="drawerState" [minimumHeight]="minimumHeight" [dockedHeight]="dockedHeight"
+<ion-bottom-drawer [disableDrag]="disableDrag" [(state)]="drawerState" [minimumHeight]="150" [dockedHeight]="dockedHeight"
   [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">
   <div class="drawer-content">
-    Bottom Drawer Content
   </div>
 </ion-bottom-drawer>
