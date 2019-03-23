@@ -40,7 +40,8 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
     this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"border-top-left-radius", "200px");
     this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"border-top-right-radius", "200px");
     this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"background-size", "350px");
-    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"background-image","url('https://static.vecteezy.com/system/resources/previews/000/153/301/non_2x/vector-old-dirty-grunge-note-paper-background.jpg')");
+    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"background-color","lightgreen");
+    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"margin-top", "30px !important");
     this._setDrawerState(this.state);
 
     //Registro un listener su un elemento html
