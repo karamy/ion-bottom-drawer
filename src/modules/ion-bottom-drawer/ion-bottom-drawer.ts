@@ -37,6 +37,8 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
 
   ngAfterViewInit() {
     this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'), 'touch-action', 'none');
+    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"border-radius","150px");
+    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"background-color","lightgreen");
     this._setDrawerState(this.state);
 
     const hammer = new Hammer(this._element.nativeElement);
