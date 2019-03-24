@@ -10,7 +10,7 @@ import { DrawerState } from './drawer-state';
 })
 export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
 
-  
+
   @Input() dockedHeight: number = 50;
 
   @Input() shouldBounce: boolean = true;
@@ -35,7 +35,7 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
     private _renderer: Renderer2,
     private _domCtrl: DomController,
     private _platform: Platform
-  ) { 
+  ) {
 
     //alert("costruncro");
 
@@ -43,10 +43,11 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
 
   ngAfterViewInit() {
     this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'), 'touch-action', 'none');
-    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"border-top-left-radius", "200px");
-    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"border-top-right-radius", "200px");
+    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"left", "-73px");
+    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"border-top-left-radius", "420px");
+    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"border-top-right-radius", "420px");
     this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"background-size", "350px");
-    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"background-color","lightgreen");
+    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"background-color","#6cca91");
     this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"margin-top", "30px !important");
     this._setDrawerState(this.state);
 
@@ -141,7 +142,7 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
   private modificaopacita = function(){
     var draggableDivY = this._element.nativeElement.querySelector('.div-draggable');
     var rect = draggableDivY.getBoundingClientRect();
-  
+
   var position = {
   top: rect.top + window.pageYOffset,
   left: rect.left + window.pageXOffset
@@ -154,14 +155,14 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
     } else if (position.top <= 5){
       opacita = 1;
       this._renderer.setStyle(this._element.nativeElement.querySelector('.sub-div-bottom'),"opacity", 1);
-    }     
+    }
     else {
-     
+
       if(opacita < 0) opacita = 0;
       if(opacita > 1) opacita = 1;
       this._renderer.setStyle(this._element.nativeElement.querySelector('.sub-div-bottom'),"opacity", opacita );
       this._renderer.setStyle(this._element.nativeElement.querySelector('.titlelista'),"opacity", opacita );
-      
+
     }
 
     var radius = Math.round(0.0022 * position.top * 200);
@@ -185,7 +186,7 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
   this._renderer.setStyle(DraggableDiv,"width",width+"%");
   this._renderer.setStyle(SubDraggableDiv,"height",height+"%");
 
-  } 
+  }
 
   private _handlePan(ev) {
     const pointerY = ev.center.y;
@@ -197,8 +198,8 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
         else if (newTop < this.distanceTop) this._setTranslateY(this.distanceTop + 'px');
         if (newTop > this._platform.height() - this.minimumHeight) this._setTranslateY((this._platform.height() - this.minimumHeight) + 'px');
       }
-      
-      
+
+
       this.modificaopacita();
 /*
     this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"border-top-left-radius", "200px");
