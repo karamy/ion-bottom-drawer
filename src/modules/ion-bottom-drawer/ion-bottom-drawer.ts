@@ -171,7 +171,7 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
 
   var DraggableDiv = this._element.nativeElement.querySelector('.div-draggable');
   var SubDraggableDiv = this._element.nativeElement.querySelector('.sub-div-draggable');
-  var minWidth = 28;
+  var minWidth = 40;
   var minHeight = 1;
   var height = 5- (0.0022 * position.top * 5);
   var width = 100-((0.16*position.top));
@@ -181,9 +181,11 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
   if (height<minHeight){
     height = minHeight;
   }
+  var leftDistance = position.top*0.067;
   this._renderer.setStyle(SubDraggableDiv,"width",width+"%");
   this._renderer.setStyle(DraggableDiv,"width",width+"%");
   this._renderer.setStyle(SubDraggableDiv,"height",height+"%");
+  this._renderer.setStyle(DraggableDiv,"margin-left",leftDistance+"%");
 
   } 
 
