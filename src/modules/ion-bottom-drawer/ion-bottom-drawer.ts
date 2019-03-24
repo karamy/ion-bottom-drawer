@@ -161,7 +161,7 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
       if(opacita > 1) opacita = 1;
       this._renderer.setStyle(this._element.nativeElement.querySelector('.sub-div-bottom'),"opacity", opacita );
       this._renderer.setStyle(this._element.nativeElement.querySelector('.titlelista'),"opacity", opacita );
-
+      
     }
 
     var radius = Math.round(0.0022 * position.top * 200);
