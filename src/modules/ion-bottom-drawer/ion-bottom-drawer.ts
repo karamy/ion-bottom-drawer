@@ -9,6 +9,8 @@ import { DrawerState } from './drawer-state';
   styleUrls: ['ion-bottom-drawer.scss']
 })
 export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
+
+  
   @Input() dockedHeight: number = 50;
 
   @Input() shouldBounce: boolean = true;
@@ -33,7 +35,11 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
     private _renderer: Renderer2,
     private _domCtrl: DomController,
     private _platform: Platform
-  ) { }
+  ) { 
+
+    //alert("costruncro");
+
+  }
 
   ngAfterViewInit() {
     this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'), 'touch-action', 'none');
@@ -131,6 +137,56 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
     }
   }
 
+
+  private modificaopacita = function(){
+    var draggableDivY = this._element.nativeElement.querySelector('.div-draggable');
+    var rect = draggableDivY.getBoundingClientRect();
+  
+  var position = {
+  top: rect.top + window.pageYOffset,
+  left: rect.left + window.pageXOffset
+  };
+  var opacita = 0;
+  opacita = 1-((position.top)*0.0062);
+    if(position.top >= 440) {
+        this._renderer.setStyle(this._element.nativeElement.querySelector('.sub-div-bottom'),"opacity", 0);
+  opacita = 0;
+    } else if (position.top <= 5){
+      opacita = 1;
+      this._renderer.setStyle(this._element.nativeElement.querySelector('.sub-div-bottom'),"opacity", 1);
+    }     
+    else {
+     
+      if(opacita < 0) opacita = 0;
+      if(opacita > 1) opacita = 1;
+      this._renderer.setStyle(this._element.nativeElement.querySelector('.sub-div-bottom'),"opacity", opacita );
+      this._renderer.setStyle(this._element.nativeElement.querySelector('.titlelista'),"opacity", opacita );
+
+    }
+
+    var radius = Math.round(0.0022 * position.top * 200);
+
+      this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"border-top-left-radius",radius+"px");
+      this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"border-top-right-radius", radius+"px");
+
+  var DraggableDiv = this._element.nativeElement.querySelector('.div-draggable');
+  var SubDraggableDiv = this._element.nativeElement.querySelector('.sub-div-draggable');
+  var minWidth = 28;
+  var minHeight = 1;
+  var height = 5- (0.0022 * position.top * 5);
+  var width = 100-((0.16*position.top));
+  if (width<minWidth){
+    width = minWidth;
+  }
+  if (height<minHeight){
+    height = minHeight;
+  }
+  this._renderer.setStyle(SubDraggableDiv,"width",width+"%");
+  this._renderer.setStyle(DraggableDiv,"width",width+"%");
+  this._renderer.setStyle(SubDraggableDiv,"height",height+"%");
+
+  } 
+
   private _handlePan(ev) {
     const pointerY = ev.center.y;
     this._renderer.setStyle(this._element.nativeElement, 'transition', 'none');
@@ -141,6 +197,12 @@ export class IonBottomDrawerComponent implements AfterViewInit, OnChanges {
         else if (newTop < this.distanceTop) this._setTranslateY(this.distanceTop + 'px');
         if (newTop > this._platform.height() - this.minimumHeight) this._setTranslateY((this._platform.height() - this.minimumHeight) + 'px');
       }
+      
+      
+      this.modificaopacita();
+/*
+    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"border-top-left-radius", "200px");
+    this._renderer.setStyle(this._element.nativeElement.querySelector('.ion-bottom-drawer-scrollable-content .scroll-content'),"border-top-right-radius", "200px");*/
     }
   }
 
